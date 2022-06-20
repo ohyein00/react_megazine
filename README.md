@@ -1,7 +1,7 @@
-# 리액트 미니 프로젝트용 기초 셋팅
 
 ### CRA
 ### Typescript
+### Styled-component
 ### Eslint - Airbnb / Prettier
 - 공동 작업을 위한 코드 포멧 통일을 위해 적용
 
@@ -31,6 +31,7 @@
 - 패턴에 익숙해지기 위해 굉장히 작은 단위부터 쪼개서 구성을 했다. 그러나 작은 프로젝트여서 그런지 아토믹 구조의 장점인 재사용성이 크게 느껴지진 않았다. 오히려 너무 잦은 컴포넌트 렌더링과 props dilling에 문제점이 생겼다.
 1) 좋아요 기능이 들어있는 곳에 console.log()를 찍으면 좋아요 할때마다 4번씩 찍히고 있다. 좋아요 요청을 mutation하고, 그 바뀐 db데이터를 다시 page->template->molcules->organism에 적용하기 때문에 발생하는 것으로 생각된다. 이 문제를 해결하려면 usememo로 pure component화를 시키면 괜찮다고 하지만 이는 남용하지 않고 복잡한 로직이 들어있는 컴포넌트에만 사용을 해야한다고 한다. 그럼 클릭 한번에 4번이나 재 렌더 되고있는 이 컴포넌트, 정말 이대로 두어도 괜찮을까? 
 2) mutation으로 delete 요청을 보내는 삭제버튼이 useCallBack으로 감싸주지 않자 무한삭제가 발생했다. onClick에 넣어준 함수가 리렌더링이 되면서 왜 자동실행되는지 이유를 모르겠다.
+3) 재사용성이 높은 컴포넌트만 아토믹하게 만들고 나머지는 유도리있게 organisms이나 template에서 구성해도 괜찮지 않을까 생각이 들었다. 어디까지 디자인패턴을 적용시켜야 할지 고민이 되었따.
 
 ## 타입스크립트에 대한 고민
 - 아직 타입스크립트 구조에 익숙하지 않아서 인지 사용에 오히려 불편함을 느낀다.
@@ -84,46 +85,40 @@
 ## 프로젝트 구성
 
 
-    ├── components      # atomic design을 위한 atoms, molecules, organisms
-    │   ├── atoms		# atoms 컴포넌트
-    │   │   ├── Button
+    ├── components   # 재사용을 위한 작은 단위의 컴포넌트   
+    │   ├── atoms		   # atoms 컴포넌트
+    │   │   ├── Buttons
     │   │   ├── NavButton
     │   │   ├── LikeButton
     │   │   ├── Input
-    │   │   ├── Image
+    │   │   ├── Figure
     │   │   ├── Title
     │   │   ├── Text
     │   │   └── TextArea
     │   ├── molecules		# molecules 컴포넌트
-    │   │   ├── TopBar
+    │   │   ├── PostTopBar
     │   │   ├── LoginForm
     │   │   ├── RegisterForm
-    │   │   ├── LinkToButton
-    │   │   ├── SubmitButton
-    │   │   ├── LikeButton
-    │   │   ├── LoginButton
-    │   │   ├── LinkToButton
-    │   │   ├── AddImgInput
-    │   │   ├── PostContent
-    │   │   ├── PostTopBar
     │   │   ├── PostLikeInfo
+    │   │   ├── userName
+    │   │   ├── userThumb
+    │   │   ├── postContent
     │   │   ├── Navigation
-    │   │   └── UserThumb
+    │   │   └── AddImgInput
     │   └── organisms		# organisms 컴포넌트
     │   │   ├── LoginContainer
     │   │   ├── RegisterContainer
     │   │   ├── Header
-    │   │   ├── PostList
+    │   │   ├── Post
     │   │   └── WriteForm
-    └── templates
+    └── templates         # 컴포넌트들 합치기  
     │   ├── LoginTemplate
     │   ├── RegisterTemplate
-    │   ├── PostListTemplate
-    │   ├── WriteTemplate
-    │   └── MypageTemplate
-    └── pages     
+    │   ├── ListTemplate
+    │   └── WriteTemplate
+    └── pages             # 기능 완성
         ├── Login
         ├── Register
-        ├── PostList
+        ├── List
         ├── Write
         └── Mypage
