@@ -39,16 +39,13 @@ function App() {
               <Route element={<PrivateRoutes authentication={false}/>}>
                 <Route path="/login" element={<Login/>} />
               </Route>
-
               <Route element={<PrivateRoutes authentication={false}/>}>
                 <Route path='/register' element={<Register/>}/>
               </Route>
-
               {/* 접근시 인증이 되어있어야 함 */}
               <Route element={<PrivateRoutes authentication/>}>
                 <Route path='/write' element={<Write/>}/>
               </Route>
-              
             </Routes>
           </Container>
         </ThemeProvider>

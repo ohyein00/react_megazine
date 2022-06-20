@@ -1,8 +1,11 @@
 import axios from "axios";
 
-const soy = "http://3.39.124.255:8080";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const soy = "http://3.39.124.255";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const yujin = "http://15.164.93.211";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const mock = "http://localhost:10004";
 const API_DEV = soy
 const API_PRODUCT = soy
 const baseURL = process.env.NODE_ENV === "development" ? API_DEV : API_PRODUCT;
@@ -42,6 +45,7 @@ authTokenInstance.interceptors.request.use(
       return config
     }
   )
+// 나중에 리프레시 토큰이나 토큰 만료에 대해 인터셉터
 
 export const defaultInstance = axiosApi(baseURL);
 export const authInstance = authTokenInstance;

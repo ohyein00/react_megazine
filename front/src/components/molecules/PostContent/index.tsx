@@ -47,6 +47,7 @@ const StyledFigureArea = styled.div`
 
 
 function PostContent({content, alt, src,template}:PostContentTYpe){
+  console.log('page3')
   return (
     <StyledCardArea template={template}>
       {src !== undefined && src !== null &&

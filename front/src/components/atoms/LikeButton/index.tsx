@@ -16,10 +16,8 @@ const StyledButton = styled.button`
   color: #e54c3f;
 `
 function LikeButton({likeByMe,onClick}: LikeByMe) {
-
   return (
     <StyledButton type="button" onClick={onClick}>
-
       {likeByMe?<FontAwesomeIcon icon="heart"/>:<FontAwesomeIcon icon={faHeart} />}
     </StyledButton>
   )

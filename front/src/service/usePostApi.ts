@@ -10,6 +10,7 @@ export default {
     const res = await authInstance.post(`${resource}`, payload,
       {headers: {'Content-Type': 'multipart/form-data'}}
     );
+    console.log(res)
     return res
   },
   async modifyPost(payload: FormData) {

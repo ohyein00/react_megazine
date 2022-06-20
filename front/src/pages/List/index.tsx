@@ -1,21 +1,14 @@
 import React from "react";
 import ListTemplate from "@templates/ListTemplate";
-import {useRecoilState} from "recoil";
 import {useQuery} from "react-query";
 import Text from "@atoms/Text";
-import {postListState} from "@recoil/postList";
 import usePostApi from "@service/usePostApi";
 
 function List() {
-  const [postList, setPostList] = useRecoilState(postListState)
 
-  const {isLoading} = useQuery(
+  const {isLoading,data} = useQuery(
     'postList', usePostApi.get, {
       cacheTime: Infinity,
-      onSuccess: data => {
-        console.log('getData')
-        setPostList(data)
-      },
       onError: e => {
         console.log(e)
       }
@@ -24,8 +17,9 @@ function List() {
   if (isLoading) {
     return <Text content="로딩중!"/>
   }
+  console.log(data)
   return (
-    <ListTemplate listData={postList}/>
+    <ListTemplate listData={data}/>
   )
 }
 

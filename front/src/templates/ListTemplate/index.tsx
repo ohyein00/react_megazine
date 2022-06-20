@@ -10,6 +10,7 @@ const StyledPostListContainer = styled.div`
 `
 
 function ListTemplate({listData}: { listData: PostListType[] }) {
+  console.log('page1')
   return (
     <>
       <Header/>
@@ -19,7 +20,6 @@ function ListTemplate({listData}: { listData: PostListType[] }) {
         }
       </StyledPostListContainer>
     </>
-
   )
 }
 

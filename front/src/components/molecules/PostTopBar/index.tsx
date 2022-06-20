@@ -94,6 +94,8 @@ function PostTopBar<T>({userName,userEmail, src, alt, postId, createdAt, post}:P
                   color={themeContext.colors.point_0}>삭제</Button>
         </StyledButtonArea>
       }
+      <Button size="xsmall" onClick={deleteCallBack} bgColor={themeContext.colors.point_4_1} round="10px"
+              color={themeContext.colors.point_0}>삭제</Button>
     </StyledCardTopBarArea>
   )
 }

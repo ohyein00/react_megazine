@@ -9,7 +9,6 @@ const StyledP = styled.p`
 `
 
 function Text({content}: TextProps) {
-
   return (
     <StyledP>{content}</StyledP>
   )

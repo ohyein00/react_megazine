@@ -18,7 +18,6 @@ const StyledLikeContainer = styled.div`
     font-size: 13px;
     margin-left: 5px;
   }
-
 `
 
 export interface PostLikeInfoType<V> extends LikeByMe, TextProps {
@@ -32,7 +31,7 @@ function PostLikeInfo<V>({likeByMe, postId, ...props}: PostLikeInfoType<V>) {
   const token = useRecoilValue(userToken)
   const likeMutation = useMutation((id: V) => likePostApi(id), {
     onSuccess: () => {
-      queryClient.invalidateQueries('postList');
+      queryClient.refetchQueries('postList');
     },
   });
   const callBackToggleLike = useCallback((event:any)=>{
@@ -43,6 +42,7 @@ function PostLikeInfo<V>({likeByMe, postId, ...props}: PostLikeInfoType<V>) {
     }
     likeMutation.mutate(postId)
   },[likeMutation, postId , token])
+  console.log('like',likeByMe)
   return (
     <StyledLikeContainer>
       <LikeButton likeByMe={likeByMe} onClick={(event)=>callBackToggleLike(event)}/>
