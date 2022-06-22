@@ -110,29 +110,16 @@ export type WriteFormFileds = {
   template: string;
 };
 
-// URL을 File 형태로 바꾸는 객체
-/*
-export const convertURLtoFile = async (url: string) => {
-  // 예시 http://mybucket-files.s3.ap-northeast-2.amazonaws.com/b8ad145b-e01a-44c6-bae4-b5a14eec9b7f.jpg
-  const response = await fetch(url); // url 접근
-  const data = await response.blob(); // 접근해서 이미지 데이터를 가져옴
-  const ext = url.split(".").pop(); // .으로 나눈 목록에서 마지막 요소는 확장자 .jpg
-  const filename = url.split("/").pop(); // / 나눈 마지막 요소는 파일이름 b8ad145b-e01a-44c6-bae4-b5a14eec9b7f.jpg
-  const metadata = { type: `image/${ext}` }; // 파일 생성을 위한 이미지 메타 데이터 생성
-  return new File([data], filename!, metadata); // 가져온 데이터를 기반으로 파일을 새로 조합
-  // 수정할때마다 새로 file 보내는 형식으로 서버를 공격해 트래픽과 저장공간을 통한 AWS 비용 청구로 지갑을 공격하는 방식
-};
-잠깐 보류
-*/
 function Write() {
   const queryClient = useQueryClient();
   const {register, handleSubmit, formState, setValue} = useForm<WriteFormFileds>({mode: 'onChange'});
   const [files, setFiles] = useState<File[]>([])
   const navigate = useNavigate();
   const location = useLocation();
+
+  const themeContext = useContext(ThemeContext);
   const state = location.state as { post: PostListType };
   // 넘어온 post 파라미터 값이 있으면 수정 모드
-  const themeContext = useContext(ThemeContext);
 
   // 넘어온 post 파라미터 확인 코드
   // true = 추가 모드, false = 수정 모드
@@ -164,14 +151,13 @@ function Write() {
 
   const postApi = writeType ? usePostApi.post : usePostApi.modifyPost;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const mutation = useMutation((addData: FieldValues) => postApi(addData), {
+  const mutation = useMutation((addData: FormData) => postApi(addData), {
     onSuccess: () => {
       queryClient.invalidateQueries('postList');
       navigate('/')
     },
-    onError: () => {
-
+    onError: (e) => {
+      console.log(e)
     }
   });
 

@@ -13,3 +13,7 @@ export interface PostListType {
   "profileImageUrl": string;
   "template": number;
 }
+export interface PostResType{
+  "end":boolean;
+  "posts":PostListType[]
+}

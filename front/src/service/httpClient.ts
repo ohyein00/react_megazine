@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const soy = "http://3.39.124.255:8080";
+const soy = "http://3.36.221.172";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const yujin = "http://15.164.93.211";
 const API_DEV = soy

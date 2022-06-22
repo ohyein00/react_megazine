@@ -3,7 +3,7 @@ import {Routes, Route} from "react-router-dom";
 import styled, {ThemeProvider} from 'styled-components';
 import { RecoilRoot } from 'recoil';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import PostList from "@pages/List";
+import List from "@pages/List";
 import Login from "@pages/Login";
 import Mypage from "@pages/Mypage";
 import Register from "@pages/Register";
@@ -33,22 +33,20 @@ function App() {
           <GlobalStyle/>
           <Container>
             <Routes>
-              <Route path='/' element={<PostList/>}/>
+              <Route path='/' element={<List/>} />
               <Route path='/mypage' element={<Mypage/>}/>
               {/* 접근시 인증이 안 되어있어야 함 */}
               <Route element={<PrivateRoutes authentication={false}/>}>
                 <Route path="/login" element={<Login/>} />
               </Route>
-
               <Route element={<PrivateRoutes authentication={false}/>}>
                 <Route path='/register' element={<Register/>}/>
               </Route>
-
               {/* 접근시 인증이 되어있어야 함 */}
               <Route element={<PrivateRoutes authentication/>}>
                 <Route path='/write' element={<Write/>}/>
               </Route>
-              
+
             </Routes>
           </Container>
         </ThemeProvider>

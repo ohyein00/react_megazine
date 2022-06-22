@@ -32,7 +32,7 @@ function PostLikeInfo<V>({likeByMe, postId, ...props}: PostLikeInfoType<V>) {
   const token = useRecoilValue(userToken)
   const likeMutation = useMutation((id: V) => likePostApi(id), {
     onSuccess: () => {
-      queryClient.invalidateQueries('postList');
+      queryClient.refetchQueries('postList');
     },
   });
   const callBackToggleLike = useCallback((event:any)=>{

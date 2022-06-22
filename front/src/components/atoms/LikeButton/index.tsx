@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   color: #e54c3f;
 `
 function LikeButton({likeByMe,onClick}: LikeByMe) {
-
+  console.log('좋아요')
   return (
     <StyledButton type="button" onClick={onClick}>
 

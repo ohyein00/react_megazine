@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   right: 0;
   height: 50px;
   background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 `
 
 function Navigation() {

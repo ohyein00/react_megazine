@@ -57,6 +57,8 @@ function LoginForm() {
   const setUserToken = useSetRecoilState(userToken)
   const mutation = useMutation((addData: FieldValues) => userApi.callLoginUser(addData), {
     onSuccess: async (res: FieldValues) => {
+
+      console.log(res)
       if (!res.data.userToken) {
         ReactSwal.fire({
           title: <p>로그인 실패!</p>,
@@ -103,7 +105,6 @@ function LoginForm() {
                minLength: {value: 8, message: "비밀번호는 8글자 이상입니다."},
                maxLength: 25
              })}>패스워드</Input>
-
       {email && password ? (
         <Button type="submit" size="big" bgColor={themeContext.colors.point_3}
                 round="10px">로그인</Button>

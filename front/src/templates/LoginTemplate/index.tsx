@@ -8,7 +8,7 @@ const StyledLoginTemplate = styled.div`
     max-width:400px;
   }
   width: 90vw;
-  margin:0 auto;
+  margin:100px auto;
   background: #fff;
   padding:10px;
   box-sizing: border-box;

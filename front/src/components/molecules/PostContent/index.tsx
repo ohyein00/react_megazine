@@ -44,8 +44,6 @@ const StyledFigureArea = styled.div`
   padding:0 0 0px;
 `
 
-
-
 function PostContent({content, alt, src,template}:PostContentTYpe){
   return (
     <StyledCardArea template={template}>
