@@ -10,6 +10,7 @@ const StyledPostListContainer = styled.div`
 `
 
 function ListTemplate({listData}: { listData: PostListType[] }) {
+
   return (
     <>
       <Header/>

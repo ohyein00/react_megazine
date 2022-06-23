@@ -148,10 +148,8 @@ function Write() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>):
     void => setBeforeTitle(e.currentTarget.value)
 
-
   // 수정모드인 경우 postId에 값 넣어줌
   if (!writeType) {
-
     setValue("title", beforeTitle);
     setValue("postId", state?.post.id);
     /*
