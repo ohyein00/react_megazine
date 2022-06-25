@@ -81,7 +81,6 @@ function PostTopBar<T>({userName,userEmail, src, alt, postId, createdAt, post}:P
       <StyledPostInfo>
         <UserThumb alt={alt} src={src} userName={userName}/>
         <StyledCreatedAt>{timeForToday(createdAt)}</StyledCreatedAt>
-
       </StyledPostInfo>
       {
         checkMyPost()

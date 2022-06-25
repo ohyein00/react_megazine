@@ -22,7 +22,7 @@ const colors = {
 };
 export type ColorsTypes = typeof colors;
 export type BgColorTypes = typeof bgColor;
-const theme: DefaultTheme = {
+  const theme: DefaultTheme = {
   colors,
   bgColor,
 };

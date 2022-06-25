@@ -13,7 +13,6 @@ const StyledLikeContainer = styled.div`
   border-top: 1px solid #efefef;
   align-items: center;
   padding: 10px 10px 0;
-
   & > p {
     font-size: 13px;
     margin-left: 5px;

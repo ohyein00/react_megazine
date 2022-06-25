@@ -17,7 +17,7 @@ const getToken = (tokenName: string) => {
     }
   }
 }
-const axiosApi = (url: string, options?: object) => {
+const axiosApi = (url: string, options?: `object) => {
   const instanceDefault = axios.create({
     baseURL: `${url}/api`,
     ...options
@@ -29,7 +29,6 @@ const authTokenInstance = axios.create({timeout:10000, baseURL: `${baseURL}/api`
 
 authTokenInstance.interceptors.request.use(
     (config)=>{
-
       const token = getToken('userToken')
       if(token) {
         config.headers = {'X-AUTH-TOKEN': `${token}`,}

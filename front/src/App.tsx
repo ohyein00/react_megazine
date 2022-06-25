@@ -2,7 +2,6 @@ import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import styled, {ThemeProvider} from 'styled-components';
 import { RecoilRoot } from 'recoil';
-import {useQueryClient, QueryClientProvider} from 'react-query';
 import PostList from "@pages/List";
 import Login from "@pages/Login";
 import Mypage from "@pages/Mypage";
@@ -24,11 +23,8 @@ const Container = styled.div`
   padding: 50px 0;
 `;
 
-
 function App() {
-  const queryClient = useQueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <ThemeProvider theme={theme}>
           <GlobalStyle/>
@@ -44,14 +40,13 @@ function App() {
                 <Route path='/register' element={<Register/>}/>
               </Route>
               {/* 접근시 인증이 되어있어야 함 */}
-              <Route element={<PrivateRoutes authentication/>}>
+              <Route element={<PrivateRoutes authentication/>}>a
                 <Route path='/write' element={<Write/>}/>
               </Route>
             </Routes>
           </Container>
         </ThemeProvider>
       </RecoilRoot>
-    </QueryClientProvider>
   )
 }
 export default App;
